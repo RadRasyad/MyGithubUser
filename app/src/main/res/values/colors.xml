@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="shark">#24292e</color>
+
+    <color name="seagreen">#2ea44f</color>
+    <color name="jewel">#16983a</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Github User</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="github_user_icon">Github User Icon</string>
+
+
+</resources>
