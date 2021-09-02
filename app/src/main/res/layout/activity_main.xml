@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -13,18 +14,28 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="200dp"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:statusBarScrim="@color/white"
             app:toolbarId="@+id/toolbar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:fitsSystemWindows="false"
+                android:foregroundGravity="bottom"
+                app:layout_collapseMode="pin"
+                app:subtitleTextColor="@color/white"
+                app:titleTextColor="@color/white" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/search_cv"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="4dp"
             app:cardCornerRadius="60dp"
             app:layout_collapseMode="pin">
@@ -41,7 +52,9 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     app:defaultQueryHint="Search Some User"
+                    app:searchIcon="@drawable/ic_search_line_black"
                     app:iconifiedByDefault="false"
+                    app:submitBackground="@drawable/bg_search"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -63,24 +76,11 @@
             android:layout_height="wrap_content"
             tools:context=".ui.MainActivity">
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvUser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/user_row" />
-
-            <ProgressBar
-                android:id="@+id/progress_bar"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="140dp"
-                app:layout_constraintEnd_toEndOf="@+id/rvUser"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="@+id/rvUser"
-                app:layout_constraintTop_toTopOf="@+id/rvUser"
-                android:visibility="gone"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

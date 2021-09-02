@@ -21,12 +21,11 @@ class UsersAdapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapte
 
         fun bind(user: Users){
             binding.apply {
-                Glide.with(itemView)
+                Glide.with(itemView.context)
                     .load(user.avatar_url)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .centerCrop()
                     .into(userImg)
-
                 tvUsername.text = user.login
             }
         }

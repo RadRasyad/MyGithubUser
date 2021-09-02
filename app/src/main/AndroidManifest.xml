@@ -8,10 +8,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_gh_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_gh_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyGithubUser">
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen" android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

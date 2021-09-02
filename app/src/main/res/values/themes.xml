@@ -8,10 +8,11 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/seagreen</item>
         <item name="colorSecondaryVariant">@color/jewel</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
     </style>
 
     <style name="Theme.MyGithubUser.NoActionBar">
@@ -19,7 +20,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.MyGithubUser.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MyGithubUser.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="Theme.MyGithubUser.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

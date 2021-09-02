@@ -1,11 +1,17 @@
 package com.radrasyad.myapplication.ui
 
+import android.app.SearchManager
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isEmpty
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,10 +33,16 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.toolbar))
         binding.toolbarLayout.title = title
+        binding.rvUser.setHasFixedSize(true)
+        binding.toolbarLayout.setExpandedTitleColor(Color.WHITE)
+        binding.toolbarLayout.setCollapsedTitleTextColor(Color.WHITE)
+        binding.toolbar.overflowIcon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_more_vert_24)
 
         adapter = UsersAdapter(listUser = ArrayList())
         adapter.notifyDataSetChanged()
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+
+        searchUser()
 
         binding.apply {
             rvUser.layoutManager = LinearLayoutManager(this@MainActivity)
@@ -49,18 +61,29 @@ class MainActivity : AppCompatActivity() {
         viewModel.getSearchUsers().observe(this, {
             if (it!=null){
                 adapter.setList(it)
-                showLoading(false)
             }
         })
-
     }
 
-    private fun searchUser(){
+    private fun searchUser(): Boolean {
         binding.apply {
-            val query = svUser.inputType.toString()
-            if (query.isEmpty()) return
-            showLoading(true)
-            viewModel.setSearchUsers(query = String())
+            val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+            svUser.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+            svUser.queryHint = resources.getString(R.string.search_hint)
+            svUser.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    query?.let{
+                        if (it.isNotEmpty()){
+                            viewModel.setSearchUsers(query)
+                        }
+                    }
+                    return true
+                }
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
+                }
+            })
+            return true
         }
     }
 
@@ -76,11 +99,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoading(state: Boolean){
-        if (state){
-            binding.progressBar.visibility = View.VISIBLE
-        }else{
-            binding.progressBar.visibility = View.GONE
-        }
-    }
 }
