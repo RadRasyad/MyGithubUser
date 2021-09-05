@@ -1,4 +1,4 @@
-package com.radrasyad.myapplication.ui
+package com.radrasyad.myapplication.ui.main
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -20,16 +20,15 @@ class MainViewModel : ViewModel() {
             .getSearchUsers(query)
             .enqueue(object : Callback<UserResponse>{
                 override fun onResponse(
-                    call: Call<UserResponse>?,
-                    response: Response<UserResponse>?
+                    call: Call<UserResponse>,
+                    response: Response<UserResponse>
                 ) {
-                    listUsers.postValue(response?.body()?.items)
-                }
-
-                override fun onFailure(call: Call<UserResponse>?, t: Throwable?) {
-                    if (t != null) {
-                        Log.d("Failure", t.message!!)
+                    if (response.isSuccessful){
+                        listUsers.postValue(response.body()?.items)
                     }
+                }
+                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                    Log.d("Failure", t.message!!)
                 }
             })
     }

@@ -1,11 +1,12 @@
-package com.radrasyad.myapplication
+package com.radrasyad.myapplication.ui.splashscreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.radrasyad.myapplication.ui.MainActivity
+import com.radrasyad.myapplication.R
+import com.radrasyad.myapplication.ui.main.MainActivity
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

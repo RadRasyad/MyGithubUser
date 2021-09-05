@@ -1,6 +1,5 @@
-package com.radrasyad.myapplication.ui
+package com.radrasyad.myapplication.ui.adapter
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -18,18 +17,20 @@ class UsersAdapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapte
     }
 
     inner class UserViewHolder(val binding: UserRowBinding) : RecyclerView.ViewHolder(binding.root){
-
         fun bind(user: Users){
             binding.apply {
                 Glide.with(itemView.context)
                     .load(user.avatar_url)
+                    .placeholder(android.R.drawable.progress_horizontal)
+                    .error(android.R.drawable.stat_notify_error)
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .centerCrop()
+                    .circleCrop()
                     .into(userImg)
                 tvUsername.text = user.login
             }
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view = UserRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)

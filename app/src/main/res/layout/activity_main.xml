@@ -36,7 +36,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="4dp"
+            android:layout_margin="8dp"
             app:cardCornerRadius="60dp"
             app:layout_collapseMode="pin">
 
@@ -52,12 +52,11 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     app:defaultQueryHint="Search Some User"
-                    app:searchIcon="@drawable/ic_search_line_black"
                     app:iconifiedByDefault="false"
-                    app:submitBackground="@drawable/bg_search"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:searchIcon="@drawable/ic_search_line_black"/>
 
             </LinearLayout>
 
@@ -74,13 +73,25 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".ui.MainActivity">
+            tools:context=".ui.main.MainActivity">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvUser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/user_row" />
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:fitsSystemWindows="false"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/rvUser"
+                app:layout_constraintEnd_toEndOf="@+id/rvUser"
+                app:layout_constraintStart_toStartOf="@id/rvUser"
+                app:layout_constraintTop_toTopOf="@id/rvUser" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

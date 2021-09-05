@@ -1,7 +1,5 @@
-package com.radrasyad.myapplication.ui
+package com.radrasyad.myapplication.ui.main
 
-import android.app.SearchManager
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.KeyEvent
@@ -12,11 +10,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
-import androidx.core.view.isEmpty
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.radrasyad.myapplication.R
 import com.radrasyad.myapplication.databinding.ActivityMainBinding
+import com.radrasyad.myapplication.ui.adapter.UsersAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,9 +36,10 @@ class MainActivity : AppCompatActivity() {
         binding.toolbarLayout.setCollapsedTitleTextColor(Color.WHITE)
         binding.toolbar.overflowIcon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_more_vert_24)
 
+
         adapter = UsersAdapter(listUser = ArrayList())
         adapter.notifyDataSetChanged()
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
 
         searchUser()
 
@@ -61,14 +60,13 @@ class MainActivity : AppCompatActivity() {
         viewModel.getSearchUsers().observe(this, {
             if (it!=null){
                 adapter.setList(it)
+                showLoading(false)
             }
         })
     }
 
-    private fun searchUser(): Boolean {
+    private fun searchUser() {
         binding.apply {
-            val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-            svUser.setSearchableInfo(searchManager.getSearchableInfo(componentName))
             svUser.queryHint = resources.getString(R.string.search_hint)
             svUser.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
@@ -77,13 +75,15 @@ class MainActivity : AppCompatActivity() {
                             viewModel.setSearchUsers(query)
                         }
                     }
-                    return true
-                }
-                override fun onQueryTextChange(newText: String?): Boolean {
                     return false
                 }
+                override fun onQueryTextChange(newText: String?): Boolean = true
             })
-            return true
+            showLoading(true)
+            svUser.setOnCloseListener{
+                svUser.setQuery("", false)
+                true
+            }
         }
     }
 
@@ -94,8 +94,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                Toast.makeText(applicationContext, "Coming Soon", Toast.LENGTH_LONG).show()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showLoading(state: Boolean){
+        if (state){
+            binding.progressbar.visibility = View.VISIBLE
+        } else {
+            binding.progressbar.visibility = View.GONE
         }
     }
 
