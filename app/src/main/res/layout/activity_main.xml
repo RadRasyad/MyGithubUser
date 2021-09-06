@@ -29,7 +29,7 @@
                 android:foregroundGravity="bottom"
                 app:layout_collapseMode="pin"
                 app:subtitleTextColor="@color/white"
-                app:titleTextColor="@color/white" />
+                app:titleTextColor="@color/white"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

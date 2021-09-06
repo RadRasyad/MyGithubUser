@@ -6,5 +6,15 @@
     <string name="search_hint">Search Some User</string>
     <string name="username">Username</string>
     <string name="user_image">User Image</string>
+    <string name="following_placeholder">9999</string>
+    <string name="following">Following</string>
+    <string name="follower_placeholder">9999</string>
+    <string name="follower">Follower</string>
+    <string name="repository">Repository</string>
+    <string name="value_placeholder">9999</string>
+    <string name="location">Location</string>
+    <string name="to_showicon_as_location">To show this user pin as location icon</string>
+    <string name="company">Company</string>
+    <string name="to_show_building_as_company">to show building as company icon</string>
 
 </resources>
