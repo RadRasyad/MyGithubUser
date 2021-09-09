@@ -19,14 +19,14 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:toolbarId="@+id/dttoolbar"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/dttoolbar">
 
             <LinearLayout
-                android:padding="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="8dp">
 
                 <LinearLayout
                     android:id="@+id/headerCollapsing"
@@ -35,14 +35,16 @@
                     android:padding="8dp">
 
                     <androidx.cardview.widget.CardView
-                        app:cardCornerRadius="100dp"
+                        android:layout_width="88dp"
                         android:layout_height="88dp"
-                        android:layout_width="88dp">
+                        app:cardCornerRadius="100dp">
+
                         <ImageView
+                            android:id="@+id/detailImg"
                             android:layout_width="88dp"
                             android:layout_height="88dp"
-                            tools:src="@tools:sample/avatars"
-                            android:contentDescription="@string/user_image"/>
+                            android:contentDescription="@string/user_image"
+                            tools:src="@tools:sample/avatars" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -83,9 +85,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/value_placeholder"
+                                    android:textColor="@color/white"
                                     android:textSize="15sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
                                     tools:ignore="HardcodedText" />
 
                             </LinearLayout>
@@ -102,8 +104,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/follower"
-                                    android:textSize="15sp"
                                     android:textColor="@color/white"
+                                    android:textSize="15sp"
                                     tools:ignore="HardcodedText" />
 
                                 <TextView
@@ -111,9 +113,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/value_placeholder"
+                                    android:textColor="@color/white"
                                     android:textSize="15sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
                                     tools:ignore="HardcodedText" />
 
                             </LinearLayout>
@@ -130,8 +132,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/following"
-                                    android:textSize="15sp"
                                     android:textColor="@color/white"
+                                    android:textSize="15sp"
                                     tools:ignore="HardcodedText" />
 
                                 <TextView
@@ -139,9 +141,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/value_placeholder"
+                                    android:textColor="@color/white"
                                     android:textSize="15sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/white"
                                     tools:ignore="HardcodedText" />
 
                             </LinearLayout>
@@ -160,58 +162,70 @@
                     android:paddingHorizontal="16dp">
 
                     <TextView
+                        android:id="@+id/detailFname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        tools:text="FullName" />
+
+                    <TextView
                         android:id="@+id/detailUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:textSize="18sp"
-                        tools:text="@string/username"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        tools:text="@string/username" />
 
                     <LinearLayout
+                        android:id="@+id/profilecenter"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:id="@+id/profilecenter">
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            tools:ignore="UseCompoundDrawables">
 
                             <ImageView
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@drawable/company"
                                 android:layout_marginEnd="8dp"
-                                android:contentDescription="@string/to_show_building_as_company" />
+                                android:contentDescription="@string/to_show_building_as_company"
+                                android:src="@drawable/company" />
+
                             <TextView
-                                android:id="@+id/company"
+                                android:id="@+id/tvcompany"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="18sp"
                                 android:text="@string/company"
-                                android:textColor="@color/white"/>
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
 
                         </LinearLayout>
 
                         <LinearLayout
-                            android:paddingTop="4dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
                             tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
-                                android:src="@drawable/map_pin"
                                 android:layout_marginEnd="8dp"
-                                android:contentDescription="@string/to_showicon_as_location" />
+                                android:contentDescription="@string/to_showicon_as_location"
+                                android:src="@drawable/map_pin" />
+
                             <TextView
-                                android:id="@+id/location"
+                                android:id="@+id/tvlocation"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="18sp"
                                 android:text="@string/location"
-                                android:textColor="@color/white"/>
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -222,12 +236,26 @@
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/detailtab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:tabTextColor="@color/white"
+            tools:ignore="SpeakableTextPresentCheck"/>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viepager2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </androidx.core.widget.NestedScrollView>
 

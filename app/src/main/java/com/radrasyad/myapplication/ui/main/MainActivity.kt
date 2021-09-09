@@ -1,5 +1,6 @@
 package com.radrasyad.myapplication.ui.main
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.KeyEvent
@@ -13,7 +14,9 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.radrasyad.myapplication.R
+import com.radrasyad.myapplication.data.model.Users
 import com.radrasyad.myapplication.databinding.ActivityMainBinding
+import com.radrasyad.myapplication.ui.DetailUserActivity
 import com.radrasyad.myapplication.ui.adapter.UsersAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +42,14 @@ class MainActivity : AppCompatActivity() {
 
         adapter = UsersAdapter(listUser = ArrayList())
         adapter.notifyDataSetChanged()
+        adapter.setOnItemClickCallback(object : UsersAdapter.OnitemClickCallback{
+            override fun onItemClicked(data: Users) {
+                Intent(this@MainActivity, DetailUserActivity::class.java).also {
+                    it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
+                    startActivity(it)
+                }
+            }
+        })
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
 
         searchUser()

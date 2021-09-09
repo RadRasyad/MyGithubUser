@@ -10,6 +10,12 @@ import com.radrasyad.myapplication.databinding.UserRowBinding
 
 class UsersAdapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
+    private var onItemClickCallback: OnitemClickCallback? = null
+
+    fun setOnItemClickCallback (onitemClickCallback: OnitemClickCallback) {
+        this.onItemClickCallback = onitemClickCallback
+    }
+
     fun setList(user: ArrayList<Users>){
         listUser.clear()
         listUser.addAll(user)
@@ -27,6 +33,9 @@ class UsersAdapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapte
                     .circleCrop()
                     .into(userImg)
                 tvUsername.text = user.login
+                binding.root.setOnClickListener {
+                    onItemClickCallback?.onItemClicked(user)
+                }
             }
         }
     }
@@ -43,4 +52,7 @@ class UsersAdapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapte
 
     override fun getItemCount(): Int = listUser.size
 
+    interface OnitemClickCallback{
+        fun onItemClicked(data: Users)
+    }
 }
