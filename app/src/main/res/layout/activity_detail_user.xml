@@ -185,6 +185,7 @@
                         android:orientation="vertical">
 
                         <LinearLayout
+                            android:id="@+id/vCompany"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             tools:ignore="UseCompoundDrawables">
@@ -207,6 +208,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/vLocation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingTop="4dp"
@@ -242,7 +244,8 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             app:tabTextColor="@color/white"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            tools:ignore="SpeakableTextPresentCheck"
+            app:tabSelectedTextColor="@color/seagreen"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

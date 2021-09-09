@@ -25,7 +25,7 @@ interface Api {
 
     @GET("users/{username}/followers")
     @Headers("Authorization: token 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")
-    fun getFollower(
+    fun getFollowers(
         @Path("username") username : String
     ): Call<ArrayList<Users>>
 

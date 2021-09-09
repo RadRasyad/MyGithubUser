@@ -1,6 +1,5 @@
 package com.radrasyad.myapplication.ui
 
-import android.graphics.drawable.DrawableContainer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.StringRes
@@ -12,6 +11,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.radrasyad.myapplication.R
 import com.radrasyad.myapplication.databinding.ActivityDetailUserBinding
+import com.radrasyad.myapplication.ui.adapter.SectionPagerAdapter
 
 class DetailUserActivity : AppCompatActivity() {
 
@@ -33,8 +33,7 @@ class DetailUserActivity : AppCompatActivity() {
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        val sectionsPagerAdapter = SectionPagerAdapter(this)
+        val sectionsPagerAdapter = SectionPagerAdapter(this, Bundle())
         val viewPager: ViewPager2 = findViewById(R.id.viepager2)
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.detailtab)
@@ -43,6 +42,8 @@ class DetailUserActivity : AppCompatActivity() {
         }.attach()
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
+        val bundle = Bundle()
+        bundle.putString(EXTRA_USERNAME, username)
 
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailUserViewModel::class.java)
 
@@ -65,13 +66,8 @@ class DetailUserActivity : AppCompatActivity() {
                         .circleCrop()
                         .into(detailImg)
                 }
-            } else{
-                binding.apply {
-                    tvcompany.text = "-"
-                    tvlocation.text = "-"
-                }
-
             }
+
         })
     }
 }
