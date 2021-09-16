@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = UsersAdapter(listUser = ArrayList())
         adapter.notifyDataSetChanged()
+
         adapter.setOnItemClickCallback(object : UsersAdapter.OnitemClickCallback{
             override fun onItemClicked(data: Users) {
                 Intent(this@MainActivity, DetailUserActivity::class.java).also {

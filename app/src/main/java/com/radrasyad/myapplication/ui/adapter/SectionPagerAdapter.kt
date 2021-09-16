@@ -1,21 +1,14 @@
 package com.radrasyad.myapplication.ui.adapter
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.radrasyad.myapplication.ui.DetailUserActivity
 import com.radrasyad.myapplication.ui.FollowersFragment
 import com.radrasyad.myapplication.ui.FollowingFragment
 
 
-class SectionPagerAdapter(activity: DetailUserActivity, data: Bundle) : FragmentStateAdapter(activity){
+class SectionPagerAdapter(activity: DetailUserActivity ) : FragmentStateAdapter(activity){
 
-    private var fragmentBundle: Bundle
-
-    init {
-        fragmentBundle = data
-    }
 
     override fun getItemCount(): Int {
         return 2
@@ -27,7 +20,7 @@ class SectionPagerAdapter(activity: DetailUserActivity, data: Bundle) : Fragment
             0 -> fragment = FollowersFragment()
             1 -> fragment = FollowingFragment()
         }
-        fragment?.arguments = this.fragmentBundle
+
         return fragment as Fragment
     }
 }

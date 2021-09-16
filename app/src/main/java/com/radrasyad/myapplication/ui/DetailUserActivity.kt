@@ -2,6 +2,7 @@ package com.radrasyad.myapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
@@ -16,7 +17,10 @@ import com.radrasyad.myapplication.ui.adapter.SectionPagerAdapter
 class DetailUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailUserBinding
-    private  lateinit var viewModel: DetailUserViewModel
+    private lateinit var viewModel: DetailUserViewModel
+    private lateinit var followersViewModel: FollowersViewModel
+    private lateinit var followingViewModel: FollowingViewModel
+
 
     companion object{
         const val EXTRA_USERNAME = "extra_username"
@@ -33,21 +37,22 @@ class DetailUserActivity : AppCompatActivity() {
         binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val sectionsPagerAdapter = SectionPagerAdapter(this, Bundle())
-        val viewPager: ViewPager2 = findViewById(R.id.viepager2)
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.detailtab)
-        TabLayoutMediator(tabs, viewPager) { tab, position ->
-            tab.text = resources.getString(TAB_TITLES[position])
-        }.attach()
-
         val username = intent.getStringExtra(EXTRA_USERNAME)
+        Log.d("UserData", "usernamenya: $username")
         val bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, username)
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailUserViewModel::class.java)
+        followersViewModel = ViewModelProvider(this).get(FollowersViewModel::class.java)
+        followingViewModel = ViewModelProvider(this).get(FollowingViewModel::class.java)
 
-        username?.let { viewModel.setUserDetail(it) }
+        followersViewModel.setListFollowers(username!!)
+        followingViewModel.setListFollowing(username)
+
+        initPageAdapter()
+
+        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailUserViewModel::class.java]
+
+        viewModel.setUserDetail(username)
         viewModel.getUserDetail().observe(this, {
             if (it !=null){
                 binding.apply {
@@ -69,5 +74,15 @@ class DetailUserActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun initPageAdapter() {
+        val sectionsPagerAdapter = SectionPagerAdapter(this)
+        val viewPager: ViewPager2 = findViewById(R.id.viewpager2)
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = findViewById(R.id.detailtab)
+        TabLayoutMediator(tabs, viewPager) { tab, position ->
+            tab.text = resources.getString(TAB_TITLES[position])
+        }.attach()
     }
 }

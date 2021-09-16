@@ -6,25 +6,21 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.radrasyad.myapplication.R
-import com.radrasyad.myapplication.databinding.FragmentFollBinding
+import com.radrasyad.myapplication.databinding.FragmentFollowingBinding
 import com.radrasyad.myapplication.ui.adapter.UsersAdapter
 
-class FollowingFragment : Fragment(R.layout.fragment_foll) {
+class FollowingFragment : Fragment(R.layout.fragment_following) {
 
-    private var _binding: FragmentFollBinding? = null
+    private var _binding : FragmentFollowingBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewModel: FollowingViewModel
     private lateinit var adapter: UsersAdapter
-    private lateinit var username: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val arg = arguments
-        username = arg?.getString(DetailUserActivity.EXTRA_USERNAME).toString()
-
-        _binding = FragmentFollBinding.bind(view)
+        _binding = FragmentFollowingBinding.bind(view)
 
         adapter = UsersAdapter(listUser = ArrayList())
         adapter.notifyDataSetChanged()
@@ -35,10 +31,9 @@ class FollowingFragment : Fragment(R.layout.fragment_foll) {
             rvUser.adapter = adapter
         }
         showLoading(true)
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FollowingViewModel::class.java)
-        viewModel.setListFollowing(username)
-        viewModel.getListFollowing().observe(viewLifecycleOwner, {
-            if (it != null) {
+        viewModel = ViewModelProvider(requireActivity())[FollowingViewModel::class.java]
+        viewModel.getListFollowing().observe(requireActivity(), {
+            if (it!=null) {
                 adapter.setList(it)
                 showLoading(false)
             }

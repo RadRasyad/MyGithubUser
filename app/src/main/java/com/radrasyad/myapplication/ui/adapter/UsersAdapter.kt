@@ -40,7 +40,6 @@ class UsersAdapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapte
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val view = UserRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return UserViewHolder(view)

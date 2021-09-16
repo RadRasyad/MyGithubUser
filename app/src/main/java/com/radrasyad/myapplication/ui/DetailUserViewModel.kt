@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.radrasyad.myapplication.api.RetrofitClient
 import com.radrasyad.myapplication.data.model.DetailUserResponse
+import com.radrasyad.myapplication.data.model.Users
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,8 +34,9 @@ class DetailUserViewModel: ViewModel() {
             })
     }
 
-    fun getUserDetail() : LiveData<DetailUserResponse> {
+    fun getUserDetail() : MutableLiveData<DetailUserResponse> {
         return user
     }
+
 }
 
