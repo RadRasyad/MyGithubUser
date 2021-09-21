@@ -19,4 +19,9 @@
         <item name="cardBackgroundColor">@color/grey900</item>
     </style>
 
+    <style name="Theme.MyGithubUser.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>

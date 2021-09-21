@@ -19,10 +19,12 @@
     <string name="to_showicon_as_location">To show this user pin as location icon</string>
     <string name="company">Company</string>
     <string name="to_show_building_as_company">to show building as company icon</string>
+
     <string name="error_m">Oops! Umm...</string>
-    <string name="favorite_button">favorite button</string>
-    <string name="favbutton">Favorite button</string>
     <string name="es_massage">Search some user</string>
     <string name="es_title">Oops Its Empty...</string>
+
+    <string name="setting_theme">Theme</string>
+    <string name="choose_theme_text">Choose Theme</string>
 
 </resources>

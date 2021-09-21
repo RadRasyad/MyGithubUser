@@ -1,8 +1,12 @@
 package com.radrasyad.myapplication.ui.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
@@ -12,13 +16,10 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.radrasyad.myapplication.R
 import com.radrasyad.myapplication.databinding.ActivityDetailUserBinding
+import com.radrasyad.myapplication.ui.Setting
 import com.radrasyad.myapplication.ui.followers.FollowersViewModel
 import com.radrasyad.myapplication.ui.following.FollowingViewModel
 import com.radrasyad.myapplication.ui.adapter.SectionPagerAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class DetailUserActivity : AppCompatActivity() {
 
@@ -46,8 +47,11 @@ class DetailUserActivity : AppCompatActivity() {
         val username = intent.getStringExtra(EXTRA_USERNAME)
         Log.d("UserData", "usernamenya: $username")
 
-        val actionBar = supportActionBar
-        actionBar!!.title = "$username"
+
+        supportActionBar?.title = "$username"
+
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         followersViewModel = ViewModelProvider(this).get(FollowersViewModel::class.java)
         followingViewModel = ViewModelProvider(this).get(FollowingViewModel::class.java)
@@ -91,5 +95,26 @@ class DetailUserActivity : AppCompatActivity() {
         TabLayoutMediator(tabs, viewPager) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            R.id.action_settings -> {
+                val mSetting = Intent(this, Setting::class.java)
+                startActivity(mSetting)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

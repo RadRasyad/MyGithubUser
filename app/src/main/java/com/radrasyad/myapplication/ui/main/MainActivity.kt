@@ -1,33 +1,23 @@
 package com.radrasyad.myapplication.ui.main
 
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.os.Bundle
 import android.view.KeyEvent
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
-import androidx.constraintlayout.widget.ConstraintSet.INVISIBLE
-import androidx.constraintlayout.widget.ConstraintSet.VISIBLE
 import androidx.core.content.ContextCompat
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.radrasyad.myapplication.R
 import com.radrasyad.myapplication.data.data.model.Users
 import com.radrasyad.myapplication.databinding.ActivityMainBinding
+import com.radrasyad.myapplication.ui.Setting
 import com.radrasyad.myapplication.ui.detail.DetailUserActivity
 import com.radrasyad.myapplication.ui.adapter.UsersAdapter
-import java.sql.Connection
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(findViewById(R.id.toolbar))
+
         binding.toolbarLayout.title = title
         binding.rvUser.setHasFixedSize(true)
         binding.toolbarLayout.setExpandedTitleColor(Color.WHITE)
@@ -81,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getSearchUsers().observe(this, {
             if (it!=null){
                 adapter.setList(it)
-                showLoading(true)
+                showLoading(false)
                 showEmpty(false)
             } else {
                 showLoading(false)
@@ -115,14 +106,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_scrolling, menu)
+        menuInflater.inflate(R.menu.menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_settings -> {
-                Toast.makeText(applicationContext, "Coming Soon", Toast.LENGTH_LONG).show()
+                val mSetting = Intent(this, Setting::class.java)
+                startActivity(mSetting)
                 true
             }
             else -> super.onOptionsItemSelected(item)
