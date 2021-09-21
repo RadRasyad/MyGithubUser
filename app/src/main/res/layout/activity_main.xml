@@ -10,6 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/shark"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -66,7 +67,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+        android:id="@+id/nestedSV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -98,8 +99,18 @@
                 app:layout_constraintStart_toStartOf="@id/rvUser"
                 app:layout_constraintTop_toTopOf="@id/rvUser" />
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/e_state"
+        layout="@layout/empty_state"
+        app:layout_anchor="@id/nestedSV"
+        app:layout_anchorGravity="center"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:visibility="visible"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

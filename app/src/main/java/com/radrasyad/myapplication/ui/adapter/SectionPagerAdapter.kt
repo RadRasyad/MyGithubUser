@@ -2,12 +2,12 @@ package com.radrasyad.myapplication.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.radrasyad.myapplication.ui.DetailUserActivity
-import com.radrasyad.myapplication.ui.FollowersFragment
-import com.radrasyad.myapplication.ui.FollowingFragment
+import com.radrasyad.myapplication.ui.detail.DetailUserActivity
+import com.radrasyad.myapplication.ui.followers.FollowersFragment
+import com.radrasyad.myapplication.ui.following.FollowingFragment
 
 
-class SectionPagerAdapter(activity: DetailUserActivity ) : FragmentStateAdapter(activity){
+class SectionPagerAdapter(activity: DetailUserActivity) : FragmentStateAdapter(activity){
 
 
     override fun getItemCount(): Int {

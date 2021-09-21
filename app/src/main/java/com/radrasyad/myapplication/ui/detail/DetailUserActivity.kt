@@ -1,4 +1,4 @@
-package com.radrasyad.myapplication.ui
+package com.radrasyad.myapplication.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +12,13 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.radrasyad.myapplication.R
 import com.radrasyad.myapplication.databinding.ActivityDetailUserBinding
+import com.radrasyad.myapplication.ui.followers.FollowersViewModel
+import com.radrasyad.myapplication.ui.following.FollowingViewModel
 import com.radrasyad.myapplication.ui.adapter.SectionPagerAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DetailUserActivity : AppCompatActivity() {
 
@@ -39,8 +45,9 @@ class DetailUserActivity : AppCompatActivity() {
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
         Log.d("UserData", "usernamenya: $username")
-        val bundle = Bundle()
-        bundle.putString(EXTRA_USERNAME, username)
+
+        val actionBar = supportActionBar
+        actionBar!!.title = "$username"
 
         followersViewModel = ViewModelProvider(this).get(FollowersViewModel::class.java)
         followingViewModel = ViewModelProvider(this).get(FollowingViewModel::class.java)
@@ -50,7 +57,7 @@ class DetailUserActivity : AppCompatActivity() {
 
         initPageAdapter()
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailUserViewModel::class.java]
+        viewModel = ViewModelProvider(this)[DetailUserViewModel::class.java]
 
         viewModel.setUserDetail(username)
         viewModel.getUserDetail().observe(this, {

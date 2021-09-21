@@ -2,6 +2,10 @@
 <resources>
     <color name="shark">#24292e</color>
 
+    <color name="grey900">#171717</color>
+    <color name="grey800">#3C4043</color>
+    <color name="grey500">#9E9E9E</color>
+
     <color name="seagreen">#2ea44f</color>
     <color name="jewel">#16983a</color>
 

@@ -1,20 +1,20 @@
-package com.radrasyad.myapplication.ui
+package com.radrasyad.myapplication.ui.detail
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.radrasyad.myapplication.api.RetrofitClient
-import com.radrasyad.myapplication.data.model.DetailUserResponse
-import com.radrasyad.myapplication.data.model.Users
+import com.radrasyad.myapplication.data.data.model.DetailUserResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailUserViewModel: ViewModel() {
+class DetailUserViewModel(application: Application): AndroidViewModel(application) {
+
     val user = MutableLiveData<DetailUserResponse>()
 
-    fun setUserDetail(username: String){
+        fun setUserDetail(username: String){
         RetrofitClient.apiInstance
             .getUserDetail(username)
             .enqueue(object : Callback<DetailUserResponse>{
@@ -28,7 +28,7 @@ class DetailUserViewModel: ViewModel() {
                 }
 
                 override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
-                    Log.d("Failure", t.message!!)
+                    Log.d("Failed to get data", t.message!!)
                 }
 
             })

@@ -1,8 +1,8 @@
 package com.radrasyad.myapplication.api
 
-import com.radrasyad.myapplication.data.model.DetailUserResponse
-import com.radrasyad.myapplication.data.model.UserResponse
-import com.radrasyad.myapplication.data.model.Users
+import com.radrasyad.myapplication.data.data.model.DetailUserResponse
+import com.radrasyad.myapplication.data.data.model.UserResponse
+import com.radrasyad.myapplication.data.data.model.Users
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers

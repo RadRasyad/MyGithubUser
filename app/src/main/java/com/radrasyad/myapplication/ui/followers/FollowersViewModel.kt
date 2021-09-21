@@ -1,41 +1,40 @@
-package com.radrasyad.myapplication.ui
+package com.radrasyad.myapplication.ui.followers
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.radrasyad.myapplication.api.RetrofitClient
-import com.radrasyad.myapplication.data.model.Users
+import com.radrasyad.myapplication.data.data.model.Users
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FollowingViewModel: ViewModel() {
+class FollowersViewModel: ViewModel() {
 
-    var listFollowing = MutableLiveData<ArrayList<Users>>()
+    var listFollowers = MutableLiveData<ArrayList<Users>>()
 
-    fun setListFollowing(username: String) {
+    fun setListFollowers(username: String) {
         RetrofitClient.apiInstance
-            .getFollowing(username)
+            .getFollowers(username)
             .enqueue(object : Callback<ArrayList<Users>>{
                 override fun onResponse(
                     call: Call<ArrayList<Users>>,
                     response: Response<ArrayList<Users>>
                 ) {
                     if (response.isSuccessful){
-                        listFollowing.postValue(response.body())
+                        listFollowers.postValue(response.body())
                     }
                 }
 
                 override fun onFailure(call: Call<ArrayList<Users>>, t: Throwable) {
-                    Log.d("Failure", t.message!!)
+                    Log.d("Failed to get followers", t.message!!)
                 }
 
             })
     }
 
-    @JvmName("getListFollowing1")
-    fun getListFollowing() : MutableLiveData<ArrayList<Users>>{
-        return listFollowing
+    @JvmName("getListFollowers1")
+    fun getListFollowers() : MutableLiveData<ArrayList<Users>>{
+        return listFollowers
     }
 }

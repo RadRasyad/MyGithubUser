@@ -1,28 +1,26 @@
-package com.radrasyad.myapplication.ui
+package com.radrasyad.myapplication.ui.following
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.radrasyad.myapplication.R
-import com.radrasyad.myapplication.databinding.FragmentFollowersBinding
+import com.radrasyad.myapplication.databinding.FragmentFollowingBinding
 import com.radrasyad.myapplication.ui.adapter.UsersAdapter
 
-class FollowersFragment : Fragment(R.layout.fragment_followers) {
+class FollowingFragment : Fragment(R.layout.fragment_following) {
 
-    private var _binding : FragmentFollowersBinding? = null
+    private var _binding : FragmentFollowingBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: FollowersViewModel
+    private lateinit var viewModel: FollowingViewModel
     private lateinit var adapter: UsersAdapter
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding = FragmentFollowersBinding.bind(view)
+        _binding = FragmentFollowingBinding.bind(view)
 
         adapter = UsersAdapter(listUser = ArrayList())
         adapter.notifyDataSetChanged()
@@ -33,9 +31,9 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
             rvUser.adapter = adapter
         }
         showLoading(true)
-        viewModel = ViewModelProvider(requireActivity())[FollowersViewModel::class.java]
-        viewModel.getListFollowers().observe(requireActivity(), {
-            if (it!=null){
+        viewModel = ViewModelProvider(requireActivity())[FollowingViewModel::class.java]
+        viewModel.getListFollowing().observe(requireActivity(), {
+            if (it!=null) {
                 adapter.setList(it)
                 showLoading(false)
             }
@@ -48,8 +46,8 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         _binding = null
     }
 
-    private fun showLoading(state: Boolean){
-        if (state){
+    private fun showLoading(state: Boolean) {
+        if (state) {
             binding.progressbar.visibility = View.VISIBLE
         } else {
             binding.progressbar.visibility = View.GONE

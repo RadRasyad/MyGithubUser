@@ -1,4 +1,4 @@
-package com.radrasyad.myapplication.data.model
+package com.radrasyad.myapplication.data.data.model
 
 data class DetailUserResponse(
     val login : String,
