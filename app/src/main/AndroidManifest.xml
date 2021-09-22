@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.radrasyad.myapplication">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -19,10 +19,11 @@
         <activity
             android:name=".ui.Setting"
             android:exported="true" />
-        <activity android:name=".ui.detail.DetailUserActivity" />
+        <activity android:name=".ui.detail.DetailUserActivity"
+            android:theme="@style/Theme.MyGithubUser"/>
         <activity
             android:name=".ui.splashscreen.SplashScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.MyGithubUser.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

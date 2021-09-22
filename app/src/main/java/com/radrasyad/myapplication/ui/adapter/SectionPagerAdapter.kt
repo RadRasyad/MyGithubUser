@@ -9,7 +9,6 @@ import com.radrasyad.myapplication.ui.following.FollowingFragment
 
 class SectionPagerAdapter(activity: DetailUserActivity) : FragmentStateAdapter(activity){
 
-
     override fun getItemCount(): Int {
         return 2
     }
@@ -20,7 +19,6 @@ class SectionPagerAdapter(activity: DetailUserActivity) : FragmentStateAdapter(a
             0 -> fragment = FollowersFragment()
             1 -> fragment = FollowingFragment()
         }
-
         return fragment as Fragment
     }
 }

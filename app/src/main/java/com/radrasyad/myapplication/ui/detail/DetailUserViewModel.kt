@@ -30,7 +30,6 @@ class DetailUserViewModel(application: Application): AndroidViewModel(applicatio
                 override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
                     Log.d("Failed to get data", t.message!!)
                 }
-
             })
     }
 

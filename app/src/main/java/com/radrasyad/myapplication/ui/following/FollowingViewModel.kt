@@ -29,7 +29,6 @@ class FollowingViewModel: ViewModel() {
                 override fun onFailure(call: Call<ArrayList<Users>>, t: Throwable) {
                     Log.d("Failed to get following", t.message!!)
                 }
-
             })
     }
 

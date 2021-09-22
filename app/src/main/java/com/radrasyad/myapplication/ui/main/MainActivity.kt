@@ -71,11 +71,14 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getSearchUsers().observe(this, {
             if (it!=null){
-                adapter.setList(it)
-                showLoading(false)
-                showEmpty(false)
-            } else {
-                showLoading(false)
+                if (it.size > 0) {
+                    adapter.setList(it)
+                    showLoading(false)
+                    showEmpty(false)
+                    showNotFound(false)
+                } else {
+                    showNotFound(true)
+                }
             }
         })
     }
@@ -89,8 +92,6 @@ class MainActivity : AppCompatActivity() {
                         if (it.isNotEmpty()){
                             viewModel.setSearchUsers(query)
                             showLoading(true)
-                        } else {
-                            showEmpty(true)
                         }
                     }
                     return false
@@ -127,7 +128,6 @@ class MainActivity : AppCompatActivity() {
             showEmpty(false)
         } else {
             binding.progressbar.visibility = View.GONE
-            showEmpty(true)
         }
     }
 
@@ -135,9 +135,18 @@ class MainActivity : AppCompatActivity() {
         if (state) {
             binding.eState.root.visibility = View.VISIBLE
         } else {
-            showEmpty(true)
             binding.eState.root.visibility = View.INVISIBLE
         }
+    }
+
+    private fun showNotFound(state: Boolean) {
+        if (state) {
+            binding.nfState.root.visibility = View.VISIBLE
+            binding.rvUser.visibility = View.GONE
+        } else {
+            binding.nfState.root.visibility = View.INVISIBLE
+        }
+
     }
 
 }

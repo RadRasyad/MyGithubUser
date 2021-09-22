@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:theme="@style/Theme.MyGithubUser.NoActionBar">
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -194,11 +193,11 @@
                             tools:ignore="UseCompoundDrawables">
 
                             <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
                                 android:layout_marginEnd="8dp"
                                 android:contentDescription="@string/to_show_building_as_company"
-                                android:src="@drawable/company" />
+                                android:src="@drawable/ic_building_line" />
 
                             <TextView
                                 android:id="@+id/tvcompany"
@@ -218,11 +217,11 @@
                             tools:ignore="UseCompoundDrawables">
 
                             <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
                                 android:layout_marginEnd="8dp"
                                 android:contentDescription="@string/to_showicon_as_location"
-                                android:src="@drawable/map_pin" />
+                                android:src="@drawable/ic_map_pin_user_line" />
 
                             <TextView
                                 android:id="@+id/tvlocation"

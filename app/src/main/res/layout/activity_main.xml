@@ -109,4 +109,13 @@
         android:layout_width="match_parent"
         android:visibility="visible"/>
 
+    <include
+        android:id="@+id/nf_state"
+        layout="@layout/notfound_state"
+        app:layout_anchor="@id/nestedSV"
+        app:layout_anchorGravity="center"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:visibility="gone"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

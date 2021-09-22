@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
@@ -20,14 +19,15 @@ import com.radrasyad.myapplication.ui.Setting
 import com.radrasyad.myapplication.ui.followers.FollowersViewModel
 import com.radrasyad.myapplication.ui.following.FollowingViewModel
 import com.radrasyad.myapplication.ui.adapter.SectionPagerAdapter
+import com.radrasyad.myapplication.ui.adapter.UsersAdapter
 
 class DetailUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailUserBinding
+    private lateinit var adapter: UsersAdapter
     private lateinit var viewModel: DetailUserViewModel
     private lateinit var followersViewModel: FollowersViewModel
     private lateinit var followingViewModel: FollowingViewModel
-
 
     companion object{
         const val EXTRA_USERNAME = "extra_username"
@@ -46,7 +46,6 @@ class DetailUserActivity : AppCompatActivity() {
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
         Log.d("UserData", "usernamenya: $username")
-
 
         supportActionBar?.title = "$username"
 

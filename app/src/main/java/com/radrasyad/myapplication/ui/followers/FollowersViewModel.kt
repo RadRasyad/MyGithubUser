@@ -29,7 +29,6 @@ class FollowersViewModel: ViewModel() {
                 override fun onFailure(call: Call<ArrayList<Users>>, t: Throwable) {
                     Log.d("Failed to get followers", t.message!!)
                 }
-
             })
     }
 

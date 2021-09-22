@@ -26,5 +26,9 @@
 
     <string name="setting_theme">Theme</string>
     <string name="choose_theme_text">Choose Theme</string>
+    <string name="notfound_message">Sorry please search another user</string>
+    <string name="not_found">Not Found</string>
+    <string name="oopss">Oopss</string>
+    <string name="splashicon">Cat image is an App Icon</string>
 
 </resources>

@@ -17,7 +17,6 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
     private lateinit var viewModel: FollowersViewModel
     private lateinit var adapter: UsersAdapter
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
