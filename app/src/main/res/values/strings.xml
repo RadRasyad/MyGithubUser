@@ -30,5 +30,7 @@
     <string name="not_found">Not Found</string>
     <string name="oopss">Oopss</string>
     <string name="splashicon">Cat image is an App Icon</string>
+    <string name="appbar_favorite">Favorite</string>
+    <string name="theme_mode">Dark Mode</string>
 
 </resources>

@@ -4,13 +4,6 @@
     tools:context="com.radrasyad.myapplication.ui.main.MainActivity">
 
     <item
-        android:id="@+id/action_favourite"
-        android:orderInCategory="100"
-        android:title="@string/appbar_favorite"
-        android:icon="@drawable/ic_heart_line"
-        app:showAsAction="always"/>
-
-    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"

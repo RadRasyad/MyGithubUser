@@ -37,5 +37,7 @@ class DetailUserViewModel(application: Application): AndroidViewModel(applicatio
         return user
     }
 
+
+
 }
 

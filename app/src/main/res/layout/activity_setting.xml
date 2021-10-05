@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Setting"
+    tools:context=".ui.setting.Setting"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,19 +13,13 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:layout_marginTop="24dp"
-        android:padding="16dp">
+        android:paddingHorizontal="16dp">
 
-        <ImageView
-            android:id="@+id/theme_ic"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_theme_mode" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@string/setting_theme"
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_theme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/theme_mode"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -41,6 +35,5 @@
             android:background="@android:color/darker_gray"/>
 
     </LinearLayout>
-
 
 </LinearLayout>

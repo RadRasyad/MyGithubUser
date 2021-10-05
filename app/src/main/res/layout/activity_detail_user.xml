@@ -257,4 +257,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:fabSize="normal"
+        app:layout_anchor="@id/viewpager2"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_heart_line"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

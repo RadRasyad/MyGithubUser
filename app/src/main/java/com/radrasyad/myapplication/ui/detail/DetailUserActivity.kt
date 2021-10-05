@@ -3,7 +3,6 @@ package com.radrasyad.myapplication.ui.detail
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.annotation.StringRes
@@ -15,22 +14,24 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.radrasyad.myapplication.R
 import com.radrasyad.myapplication.databinding.ActivityDetailUserBinding
-import com.radrasyad.myapplication.ui.Setting
+import com.radrasyad.myapplication.ui.setting.Setting
 import com.radrasyad.myapplication.ui.followers.FollowersViewModel
 import com.radrasyad.myapplication.ui.following.FollowingViewModel
 import com.radrasyad.myapplication.ui.adapter.SectionPagerAdapter
-import com.radrasyad.myapplication.ui.adapter.UsersAdapter
+import com.radrasyad.myapplication.ui.favorite.FavoriteActivity
 
 class DetailUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailUserBinding
-    private lateinit var adapter: UsersAdapter
     private lateinit var viewModel: DetailUserViewModel
     private lateinit var followersViewModel: FollowersViewModel
     private lateinit var followingViewModel: FollowingViewModel
 
+    private var favoriteActive = false
+
     companion object{
         const val EXTRA_USERNAME = "extra_username"
+        const val EXTRA_ID ="extra_id"
 
         @StringRes
         private val TAB_TITLES = intArrayOf(
@@ -45,7 +46,6 @@ class DetailUserActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
-        Log.d("UserData", "usernamenya: $username")
 
         supportActionBar?.title = "$username"
 
@@ -103,6 +103,13 @@ class DetailUserActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+
+            R.id.action_favourite -> {
+                val mFavorite = Intent(this, FavoriteActivity::class.java)
+                startActivity(mFavorite)
+                true
+            }
+
             android.R.id.home -> {
                 finish()
                 true
@@ -116,4 +123,5 @@ class DetailUserActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 }

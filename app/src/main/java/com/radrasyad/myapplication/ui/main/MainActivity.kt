@@ -15,9 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.radrasyad.myapplication.R
 import com.radrasyad.myapplication.data.data.model.Users
 import com.radrasyad.myapplication.databinding.ActivityMainBinding
-import com.radrasyad.myapplication.ui.Setting
+import com.radrasyad.myapplication.ui.setting.Setting
 import com.radrasyad.myapplication.ui.detail.DetailUserActivity
 import com.radrasyad.myapplication.ui.adapter.UsersAdapter
+import com.radrasyad.myapplication.ui.favorite.FavoriteActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             override fun onItemClicked(data: Users) {
                 Intent(this@MainActivity, DetailUserActivity::class.java).also {
                     it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
+                    it.putExtra(DetailUserActivity.EXTRA_ID, data.id)
                     startActivity(it)
                 }
             }
@@ -113,6 +115,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+
+            R.id.action_favourite -> {
+                val mFavorite = Intent(this, FavoriteActivity::class.java)
+                startActivity(mFavorite)
+                true
+            }
+
             R.id.action_settings -> {
                 val mSetting = Intent(this, Setting::class.java)
                 startActivity(mSetting)
@@ -125,6 +134,8 @@ class MainActivity : AppCompatActivity() {
     private fun showLoading(state: Boolean){
         if (state){
             binding.progressbar.visibility = View.VISIBLE
+            binding.rvUser.visibility = View.GONE
+            showNotFound(false)
             showEmpty(false)
         } else {
             binding.progressbar.visibility = View.GONE
@@ -145,6 +156,7 @@ class MainActivity : AppCompatActivity() {
             binding.rvUser.visibility = View.GONE
         } else {
             binding.nfState.root.visibility = View.INVISIBLE
+            binding.rvUser.visibility = View.VISIBLE
         }
 
     }
