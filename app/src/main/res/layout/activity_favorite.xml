@@ -17,7 +17,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="260dp"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -64,8 +64,8 @@
     </androidx.core.widget.NestedScrollView>
 
     <include
-        android:id="@+id/e_state"
-        layout="@layout/empty_state"
+        android:id="@+id/fav_e_state"
+        layout="@layout/empty_state_favorite"
         app:layout_anchor="@id/fav_nsv"
         app:layout_anchorGravity="center"
         android:layout_height="match_parent"

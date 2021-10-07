@@ -10,19 +10,22 @@
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_baseline_brightness_6_24.xml" value="0.31666666666666665" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.31666666666666665" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_building_line.xml" value="0.31666666666666665" />
+        <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_heart_2_fill.xml" value="0.31666666666666665" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_heart_add_fill.xml" value="0.15092592592592594" />
+        <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_heart_add_line.xml" value="0.31666666666666665" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_heart_fill.xml" value="0.15092592592592594" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_heart_fill_gray.xml" value="0.31666666666666665" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_heart_line.xml" value="0.31666666666666665" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_launcher_background.xml" value="0.31666666666666665" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_map_pin_user_line.xml" value="0.3162162162162162" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/drawable/ic_search_line.xml" value="0.31666666666666665" />
-        <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/activity_detail_user.xml" value="0.33" />
+        <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/activity_detail_user.xml" value="0.25" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/activity_favorite.xml" value="0.25" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/activity_setting.xml" value="0.3022522522522523" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/activity_splash_screen.xml" value="0.3027027027027027" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/empty_state.xml" value="0.25" />
+        <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/empty_state_favorite.xml" value="0.3027027027027027" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/error_layout.xml" value="0.3022522522522523" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/fragment_foll.xml" value="0.25" />
         <entry key="..\:/Dicoding/MyGithubUser/app/src/main/res/layout/fragment_followers.xml" value="0.3022522522522523" />

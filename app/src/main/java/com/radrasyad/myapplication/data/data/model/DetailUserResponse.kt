@@ -1,15 +1,15 @@
 package com.radrasyad.myapplication.data.data.model
 
 data class DetailUserResponse(
-    val login : String,
-    val avatar_url : String,
-    val id : String,
-    val followers_url : String,
-    val following_url : String,
-    val name : String,
-    val public_repos : Int,
-    val followers : Int,
-    val following : Int,
-    val company : String,
-    val location : String
+    val login : String? = null,
+    val avatar_url : String? = null,
+    val id : Int = 0,
+    val followers_url : String? = null,
+    val following_url : String? = null,
+    val name : String? = null,
+    val public_repos : Int? = null,
+    val followers : Int? = null,
+    val following : Int? = null,
+    val company : String? = null,
+    val location : String? = null
 )

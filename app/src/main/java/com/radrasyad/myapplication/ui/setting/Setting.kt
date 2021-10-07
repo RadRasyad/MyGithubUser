@@ -25,11 +25,7 @@ class Setting : AppCompatActivity() {
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val actionBar = supportActionBar
-        actionBar?.title = "Setting"
-
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        initAppbar()
 
         val switchTheme = findViewById<SwitchMaterial>(R.id.switch_theme)
 
@@ -52,6 +48,15 @@ class Setting : AppCompatActivity() {
             settingViewModel.saveThemeSetting(isChecked)
         }
 
+    }
+
+    fun initAppbar() {
+
+        val actionBar = supportActionBar
+        actionBar?.title = "Setting"
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

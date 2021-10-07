@@ -8,22 +8,24 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.radrasyad.myapplication.data.data.model.Users
 import com.radrasyad.myapplication.databinding.UserRowBinding
 
-class UsersAdapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
+class UsersAdapter(private val listUser: ArrayList<Users>) :
+    RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
     private var onItemClickCallback: OnitemClickCallback? = null
 
-    fun setOnItemClickCallback (onitemClickCallback: OnitemClickCallback) {
+    fun setOnItemClickCallback(onitemClickCallback: OnitemClickCallback) {
         this.onItemClickCallback = onitemClickCallback
     }
 
-    fun setList(user: ArrayList<Users>){
+    fun setList(user: ArrayList<Users>) {
         listUser.clear()
         listUser.addAll(user)
         notifyDataSetChanged()
     }
 
-    inner class UserViewHolder(val binding: UserRowBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(user: Users){
+    inner class UserViewHolder(val binding: UserRowBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(user: Users) {
             binding.apply {
                 Glide.with(itemView.context)
                     .load(user.avatar_url)
@@ -51,7 +53,7 @@ class UsersAdapter(private val listUser: ArrayList<Users>) : RecyclerView.Adapte
 
     override fun getItemCount(): Int = listUser.size
 
-    interface OnitemClickCallback{
+    interface OnitemClickCallback {
         fun onItemClicked(data: Users)
     }
 }

@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'kotlin-parcelize'
 }
 
 android {
@@ -60,9 +59,6 @@ dependencies {
 
     implementation 'androidx.room:room-runtime:2.3.0'
     kapt 'androidx.room:room-compiler:2.3.0'
-
-    androidTestImplementation 'androidx.room:room-testing:2.3.0'
-    androidTestImplementation 'androidx.test:runner:1.4.0'
 
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 

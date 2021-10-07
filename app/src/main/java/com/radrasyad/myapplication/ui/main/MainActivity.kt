@@ -33,13 +33,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(findViewById(R.id.toolbar))
-
-        binding.toolbarLayout.title = title
-        binding.rvUser.setHasFixedSize(true)
-        binding.toolbarLayout.setExpandedTitleColor(Color.WHITE)
-        binding.toolbarLayout.setCollapsedTitleTextColor(Color.WHITE)
-        binding.toolbar.overflowIcon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_more_vert_24)
+        initAppbar()
 
         adapter = UsersAdapter(listUser = ArrayList())
         adapter.notifyDataSetChanged()
@@ -49,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 Intent(this@MainActivity, DetailUserActivity::class.java).also {
                     it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
                     it.putExtra(DetailUserActivity.EXTRA_ID, data.id)
+                    it.putExtra(DetailUserActivity.EXTRA_AVATAR, data.avatar_url)
                     startActivity(it)
                 }
             }
@@ -83,6 +78,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun initAppbar() {
+        setSupportActionBar(findViewById(R.id.toolbar))
+
+        binding.toolbarLayout.title = title
+        binding.rvUser.setHasFixedSize(true)
+        binding.toolbarLayout.setExpandedTitleColor(Color.WHITE)
+        binding.toolbarLayout.setCollapsedTitleTextColor(Color.WHITE)
+        binding.toolbar.overflowIcon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_more_vert_24)
     }
 
     private fun searchUser() {
