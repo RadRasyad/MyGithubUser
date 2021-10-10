@@ -3,7 +3,6 @@
     <color name="shark">#24292e</color>
 
     <color name="grey900">#171717</color>
-    <color name="grey800">#3C4043</color>
     <color name="grey500">#9E9E9E</color>
 
     <color name="seagreen">#2ea44f</color>
@@ -11,6 +10,5 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorGrey">#F0F0F0</color>
     <color name="hintColor">#808080</color>
 </resources>

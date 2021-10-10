@@ -20,7 +20,6 @@ import com.radrasyad.myapplication.ui.detail.DetailUserActivity
 import com.radrasyad.myapplication.ui.detail.DetailUserActivity.Companion.EXTRA_AVATAR
 import com.radrasyad.myapplication.ui.detail.DetailUserActivity.Companion.EXTRA_ID
 import com.radrasyad.myapplication.ui.detail.DetailUserActivity.Companion.EXTRA_USERNAME
-import com.radrasyad.myapplication.ui.main.MainViewModel
 import com.radrasyad.myapplication.ui.setting.Setting
 
 class FavoriteActivity : AppCompatActivity() {
@@ -37,12 +36,12 @@ class FavoriteActivity : AppCompatActivity() {
 
         initAppbar()
 
-        adapter = UsersAdapter(listUser = ArrayList())
+        adapter = UsersAdapter()
         adapter.notifyDataSetChanged()
 
         favoriteViewModel = obtainViewModel(this@FavoriteActivity)
 
-        adapter.setOnItemClickCallback(object : UsersAdapter.OnitemClickCallback {
+        adapter.setOnItemClickCallback(object : UsersAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Users) {
                 Intent(this@FavoriteActivity, DetailUserActivity::class.java).also {
                     it.putExtra(EXTRA_USERNAME, data.login)
@@ -62,7 +61,7 @@ class FavoriteActivity : AppCompatActivity() {
 
         favoriteViewModel.getAllFavorites()?.observe(this, { favoriteList ->
             if (favoriteList != null) {
-                if (favoriteList.size > 0) {
+                if (favoriteList.isNotEmpty()) {
                     val userList = mapList(favoriteList)
                     adapter.setList(userList)
                     showEmpty(false)
@@ -72,7 +71,6 @@ class FavoriteActivity : AppCompatActivity() {
 
             }
         })
-
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): FavoriteViewModel {
@@ -118,7 +116,7 @@ class FavoriteActivity : AppCompatActivity() {
         }
     }
 
-    fun initAppbar() {
+    private fun initAppbar() {
 
         setSupportActionBar(findViewById(R.id.fav_toolbar))
 
@@ -126,7 +124,8 @@ class FavoriteActivity : AppCompatActivity() {
         binding.favRvUser.setHasFixedSize(true)
         binding.toolbarLayout.setExpandedTitleColor(Color.WHITE)
         binding.toolbarLayout.setCollapsedTitleTextColor(Color.WHITE)
-        binding.favToolbar.overflowIcon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_more_vert_24)
+        binding.favToolbar.overflowIcon =
+            ContextCompat.getDrawable(this, R.drawable.ic_baseline_more_vert_24)
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24)
         supportActionBar?.setDisplayShowHomeEnabled(true)

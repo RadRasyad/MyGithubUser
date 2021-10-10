@@ -52,7 +52,7 @@
                         android:layout_width="250dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
-                        android:layout_marginHorizontal="32dp"
+                        android:layout_marginHorizontal="16dp"
                         style="@style/Theme.MyGithubUser"
                         app:cardCornerRadius="18dp">
 
@@ -77,8 +77,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/repository"
                                     android:textColor="@color/white"
-                                    android:textSize="15sp"
-                                    tools:ignore="HardcodedText" />
+                                    android:textSize="15sp" />
 
                                 <TextView
                                     android:id="@+id/repository"
@@ -87,8 +86,7 @@
                                     android:text="@string/value_placeholder"
                                     android:textColor="@color/white"
                                     android:textSize="15sp"
-                                    android:textStyle="bold"
-                                    tools:ignore="HardcodedText" />
+                                    android:textStyle="bold" />
 
                             </LinearLayout>
 
@@ -260,7 +258,8 @@
         app:fabSize="normal"
         app:layout_anchor="@id/viewpager2"
         app:layout_anchorGravity="bottom|end"
-        android:contentDescription="Favorite Button"
-        app:srcCompat="@drawable/ic_heart_2_fill"/>
+        android:contentDescription="@string/favorite_button"
+        app:srcCompat="@drawable/ic_heart_2_fill"
+        android:focusable="true" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

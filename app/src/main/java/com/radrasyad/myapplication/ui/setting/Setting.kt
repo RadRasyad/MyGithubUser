@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.radrasyad.myapplication.R
 import com.radrasyad.myapplication.databinding.ActivitySettingBinding
+import com.radrasyad.myapplication.helper.SettingViewModelFactory
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -50,7 +51,7 @@ class Setting : AppCompatActivity() {
 
     }
 
-    fun initAppbar() {
+    private fun initAppbar() {
 
         val actionBar = supportActionBar
         actionBar?.title = "Setting"

@@ -1,5 +1,6 @@
 package com.radrasyad.myapplication.ui.splashscreen
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -15,19 +16,23 @@ import com.radrasyad.myapplication.R
 import com.radrasyad.myapplication.ui.main.MainActivity
 import com.radrasyad.myapplication.ui.setting.SettingPreferences
 import com.radrasyad.myapplication.ui.setting.SettingViewModel
-import com.radrasyad.myapplication.ui.setting.SettingViewModelFactory
+import com.radrasyad.myapplication.helper.SettingViewModelFactory
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
+        val delay = 2000
+
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        }, 2000)
+        }, delay.toLong())
 
         val pref = SettingPreferences.getInstance(dataStore)
         val settingViewModel = ViewModelProvider(this, SettingViewModelFactory(pref)).get(
@@ -41,6 +46,6 @@ class SplashScreen : AppCompatActivity() {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 }
             })
-
     }
+
 }

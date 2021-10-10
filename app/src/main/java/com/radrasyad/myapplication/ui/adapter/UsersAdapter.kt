@@ -1,5 +1,6 @@
 package com.radrasyad.myapplication.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,22 +9,24 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.radrasyad.myapplication.data.data.model.Users
 import com.radrasyad.myapplication.databinding.UserRowBinding
 
-class UsersAdapter(private val listUser: ArrayList<Users>) :
-    RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
+class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
 
-    private var onItemClickCallback: OnitemClickCallback? = null
+    private var listUser = ArrayList<Users>()
+    private var onItemClickCallback: OnItemClickCallback? = null
 
-    fun setOnItemClickCallback(onitemClickCallback: OnitemClickCallback) {
+    fun setOnItemClickCallback(onitemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onitemClickCallback
     }
 
     fun setList(user: ArrayList<Users>) {
+
         listUser.clear()
         listUser.addAll(user)
         notifyDataSetChanged()
+
     }
 
-    inner class UserViewHolder(val binding: UserRowBinding) :
+    inner class UserViewHolder(private val binding: UserRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(user: Users) {
             binding.apply {
@@ -53,7 +56,7 @@ class UsersAdapter(private val listUser: ArrayList<Users>) :
 
     override fun getItemCount(): Int = listUser.size
 
-    interface OnitemClickCallback {
+    interface OnItemClickCallback {
         fun onItemClicked(data: Users)
     }
 }

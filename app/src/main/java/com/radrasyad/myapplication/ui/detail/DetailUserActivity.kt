@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
-import androidx.appcompat.app.ActionBar
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -36,9 +33,9 @@ class DetailUserActivity : AppCompatActivity() {
     private lateinit var followersViewModel: FollowersViewModel
     private lateinit var followingViewModel: FollowingViewModel
 
-    companion object{
+    companion object {
         const val EXTRA_USERNAME = "extra_username"
-        const val EXTRA_ID ="extra_id"
+        const val EXTRA_ID = "extra_id"
         const val EXTRA_AVATAR = "extra_avatar"
 
         @StringRes
@@ -60,8 +57,12 @@ class DetailUserActivity : AppCompatActivity() {
         followersViewModel = ViewModelProvider(this).get(FollowersViewModel::class.java)
         followingViewModel = ViewModelProvider(this).get(FollowingViewModel::class.java)
 
-        followersViewModel.setListFollowers(username!!)
-        followingViewModel.setListFollowing(username)
+        if (username != null) {
+            followersViewModel.setListFollowers(username)
+        }
+        if (username != null) {
+            followingViewModel.setListFollowing(username)
+        }
 
         supportActionBar?.title = "$username"
         initAppbar()
@@ -69,17 +70,19 @@ class DetailUserActivity : AppCompatActivity() {
 
         viewModel = obtainViewModel(this)
 
-        viewModel.setUserDetail(username)
+        if (username != null) {
+            viewModel.setUserDetail(username)
+        }
         viewModel.getUserDetail().observe(this, {
-            if (it !=null){
+            if (it != null) {
                 binding.apply {
                     detailFname.text = it.name
                     detailUsername.text = it.login
                     repository.text = it.public_repos.toString()
                     txtFollower.text = it.followers.toString()
                     txtFollowing.text = it.following.toString()
-                    tvcompany.text = it.company
-                    tvlocation.text = it.location
+                    tvcompany.text = it.company ?: "-"
+                    tvlocation.text = it.location ?: "-"
                     Glide.with(this@DetailUserActivity)
                         .load(it.avatar_url)
                         .placeholder(android.R.drawable.progress_horizontal)
@@ -105,26 +108,32 @@ class DetailUserActivity : AppCompatActivity() {
                         isFavorite = !isFavorite
 
                         if (isFavorite) {
-                            viewModel.addToFavorite(username, id, img)
+                            if (username != null) {
+                                viewModel.addToFavorite(username, id, img)
+                            }
                             Toast.makeText(
-                                this@DetailUserActivity, "Favorited",
+                                this@DetailUserActivity,
+                                "Favorited",
                                 Toast.LENGTH_SHORT
-                            ).show()
+                            )
+                                .show()
                         } else {
                             viewModel.removeFromFavorite(id)
                             Toast.makeText(
-                                this@DetailUserActivity, "Unfavorited",
+                                this@DetailUserActivity,
+                                "Unfavorited",
                                 Toast.LENGTH_SHORT
                             )
                                 .show()
                         }
-
                         setStatusFavorite(isFavorite)
                     }
+
                 }
             }
 
         })
+
     }
 
     private fun initAppbar() {

@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         initAppbar()
 
-        adapter = UsersAdapter(listUser = ArrayList())
+        adapter = UsersAdapter()
         adapter.notifyDataSetChanged()
 
-        adapter.setOnItemClickCallback(object : UsersAdapter.OnitemClickCallback{
+        adapter.setOnItemClickCallback(object : UsersAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Users) {
                 Intent(this@MainActivity, DetailUserActivity::class.java).also {
                     it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
@@ -48,7 +48,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MainViewModel::class.java]
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[MainViewModel::class.java]
 
         searchUser()
 
@@ -58,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             rvUser.adapter = adapter
 
             svUser.setOnKeyListener { _, keyCode, event ->
-                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER){
+                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                     searchUser()
                     return@setOnKeyListener true
                 }
@@ -67,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.getSearchUsers().observe(this, {
-            if (it!=null){
+            if (it != null) {
                 if (it.size > 0) {
                     adapter.setList(it)
                     showLoading(false)
@@ -87,7 +90,8 @@ class MainActivity : AppCompatActivity() {
         binding.rvUser.setHasFixedSize(true)
         binding.toolbarLayout.setExpandedTitleColor(Color.WHITE)
         binding.toolbarLayout.setCollapsedTitleTextColor(Color.WHITE)
-        binding.toolbar.overflowIcon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_more_vert_24)
+        binding.toolbar.overflowIcon =
+            ContextCompat.getDrawable(this, R.drawable.ic_baseline_more_vert_24)
     }
 
     private fun searchUser() {
@@ -95,18 +99,19 @@ class MainActivity : AppCompatActivity() {
             svUser.queryHint = resources.getString(R.string.search_hint)
             svUser.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
-                    query?.let{
-                        if (it.isNotEmpty()){
+                    query?.let {
+                        if (it.isNotEmpty()) {
                             viewModel.setSearchUsers(query)
                             showLoading(true)
                         }
                     }
                     return false
                 }
+
                 override fun onQueryTextChange(newText: String?): Boolean = true
             })
             showEmpty(true)
-            svUser.setOnCloseListener{
+            svUser.setOnCloseListener {
                 svUser.setQuery("", false)
                 true
             }
@@ -136,8 +141,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoading(state: Boolean){
-        if (state){
+    private fun showLoading(state: Boolean) {
+        if (state) {
             binding.progressbar.visibility = View.VISIBLE
             binding.rvUser.visibility = View.GONE
             showNotFound(false)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.radrasyad.myapplication">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,12 +14,11 @@
         android:roundIcon="@mipmap/ic_gh_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyGithubUser"
-        android:usesCleartextTraffic="true"
-        tools:targetApi="m">
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.favorite.FavoriteActivity"
-            android:theme="@style/Theme.MyGithubUser.NoActionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.MyGithubUser.NoActionBar" />
         <activity
             android:name=".ui.setting.Setting"
             android:exported="true" />
@@ -28,7 +27,8 @@
             android:theme="@style/Theme.MyGithubUser" />
         <activity
             android:name=".ui.splashscreen.SplashScreen"
-            android:theme="@style/Theme.MyGithubUser.NoActionBar">
+            android:exported="true"
+            android:theme="@style/Theme.MyGithubUser.NoActionBar.WindowBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,6 +37,7 @@
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
+            android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyGithubUser.NoActionBar">
             <intent-filter>

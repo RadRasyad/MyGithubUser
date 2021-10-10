@@ -1,7 +1,9 @@
-package com.radrasyad.myapplication.ui.setting
+package com.radrasyad.myapplication.helper
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider.NewInstanceFactory
+import com.radrasyad.myapplication.ui.setting.SettingPreferences
+import com.radrasyad.myapplication.ui.setting.SettingViewModel
 
 
 class SettingViewModelFactory(private val pref: SettingPreferences) : NewInstanceFactory() {
@@ -13,4 +15,5 @@ class SettingViewModelFactory(private val pref: SettingPreferences) : NewInstanc
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
+
 }

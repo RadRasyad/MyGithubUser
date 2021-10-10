@@ -1,6 +1,7 @@
 package com.radrasyad.myapplication.ui.followers
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.radrasyad.myapplication.api.RetrofitClient
@@ -9,19 +10,19 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FollowersViewModel: ViewModel() {
+class FollowersViewModel : ViewModel() {
 
-    var listFollowers = MutableLiveData<ArrayList<Users>>()
+    private val listFollowers = MutableLiveData<ArrayList<Users>>()
 
     fun setListFollowers(username: String) {
         RetrofitClient.apiInstance
             .getFollowers(username)
-            .enqueue(object : Callback<ArrayList<Users>>{
+            .enqueue(object : Callback<ArrayList<Users>> {
                 override fun onResponse(
                     call: Call<ArrayList<Users>>,
                     response: Response<ArrayList<Users>>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
                         listFollowers.postValue(response.body())
                     }
                 }
@@ -32,8 +33,7 @@ class FollowersViewModel: ViewModel() {
             })
     }
 
-    @JvmName("getListFollowers1")
-    fun getListFollowers() : MutableLiveData<ArrayList<Users>>{
+    fun getListFollowers(): LiveData<ArrayList<Users>> {
         return listFollowers
     }
 }

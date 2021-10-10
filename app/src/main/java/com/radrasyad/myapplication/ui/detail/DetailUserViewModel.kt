@@ -15,30 +15,31 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailUserViewModel(application: Application): AndroidViewModel(application) {
+class DetailUserViewModel(application: Application) : AndroidViewModel(application) {
 
     val user = MutableLiveData<DetailUserResponse>()
     private val mFavoriteRepository: FavoriteRepository = FavoriteRepository(application)
 
-        fun setUserDetail(username: String){
+    fun setUserDetail(username: String) {
         RetrofitClient.apiInstance
             .getUserDetail(username)
-            .enqueue(object : Callback<DetailUserResponse>{
+            .enqueue(object : Callback<DetailUserResponse> {
                 override fun onResponse(
                     call: Call<DetailUserResponse>,
                     response: Response<DetailUserResponse>
                 ) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
                         user.postValue(response.body())
                     }
                 }
+
                 override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
-                    Log.d("Failed to get data", t.message!!)
+                    Log.d("Failed to get data", t.message.toString())
                 }
             })
     }
 
-    fun getUserDetail() : MutableLiveData<DetailUserResponse> {
+    fun getUserDetail(): MutableLiveData<DetailUserResponse> {
         return user
     }
 
@@ -60,7 +61,6 @@ class DetailUserViewModel(application: Application): AndroidViewModel(applicatio
             mFavoriteRepository.delete(id)
         }
     }
-
 
 }
 

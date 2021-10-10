@@ -7,11 +7,9 @@ import com.radrasyad.myapplication.ui.followers.FollowersFragment
 import com.radrasyad.myapplication.ui.following.FollowingFragment
 
 
-class SectionPagerAdapter(activity: DetailUserActivity) : FragmentStateAdapter(activity){
+class SectionPagerAdapter(activity: DetailUserActivity) : FragmentStateAdapter(activity) {
 
-    override fun getItemCount(): Int {
-        return 2
-    }
+    override fun getItemCount(): Int = 2
 
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null

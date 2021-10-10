@@ -5,13 +5,10 @@
     <string name="tab_folowing">Following</string>
 
     <string name="action_settings">Settings</string>
-    <string name="github_user_icon">Github User Icon</string>
     <string name="search_hint">Search Some User</string>
     <string name="username">Username</string>
     <string name="user_image">User Image</string>
-    <string name="following_placeholder">9999</string>
     <string name="following">Following</string>
-    <string name="follower_placeholder">9999</string>
     <string name="follower">Follower</string>
     <string name="repository">Repository</string>
     <string name="value_placeholder">9999</string>
@@ -20,17 +17,17 @@
     <string name="company">Company</string>
     <string name="to_show_building_as_company">to show building as company icon</string>
 
-    <string name="error_m">Oops! Umm...</string>
     <string name="es_massage">Search some user</string>
-    <string name="es_title">Oops Its Empty...</string>
+    <string name="es_title">Oops Its Empty…</string>
 
-    <string name="setting_theme">Theme</string>
-    <string name="choose_theme_text">Choose Theme</string>
     <string name="notfound_message">Sorry please search another user</string>
     <string name="not_found">Not Found</string>
-    <string name="oopss">Oopss</string>
+    <string name="oopss">Oopss…</string>
     <string name="splashicon">Cat image is an App Icon</string>
     <string name="appbar_favorite">Favorite</string>
     <string name="theme_mode">Dark Mode</string>
+    <string name="favorite_button">Favorite Button</string>
+    <string name="cd_emptyState">The list is empty, try to find some users</string>
+    <string name="empty_state_subtitle">Favorite some user</string>
 
 </resources>
