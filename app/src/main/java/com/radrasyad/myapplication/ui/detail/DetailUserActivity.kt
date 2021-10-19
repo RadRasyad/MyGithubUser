@@ -57,14 +57,11 @@ class DetailUserActivity : AppCompatActivity() {
         followersViewModel = ViewModelProvider(this).get(FollowersViewModel::class.java)
         followingViewModel = ViewModelProvider(this).get(FollowingViewModel::class.java)
 
-        if (username != null) {
-            followersViewModel.setListFollowers(username)
-        }
-        if (username != null) {
-            followingViewModel.setListFollowing(username)
-        }
+        username?.let { followingViewModel.setListFollowing(it) }
+        username?.let { followersViewModel.setListFollowers(it) }
 
         supportActionBar?.title = "$username"
+
         initAppbar()
         initPageAdapter()
 
@@ -112,28 +109,24 @@ class DetailUserActivity : AppCompatActivity() {
                                 viewModel.addToFavorite(username, id, img)
                             }
                             Toast.makeText(
-                                this@DetailUserActivity,
-                                "Favorited",
+                                this@DetailUserActivity, "Favorited",
                                 Toast.LENGTH_SHORT
-                            )
-                                .show()
+                            ).show()
                         } else {
                             viewModel.removeFromFavorite(id)
                             Toast.makeText(
-                                this@DetailUserActivity,
-                                "Unfavorited",
+                                this@DetailUserActivity, "Unfavorited",
                                 Toast.LENGTH_SHORT
                             )
                                 .show()
                         }
+
                         setStatusFavorite(isFavorite)
                     }
-
                 }
             }
 
         })
-
     }
 
     private fun initAppbar() {
@@ -149,7 +142,7 @@ class DetailUserActivity : AppCompatActivity() {
 
     private fun initPageAdapter() {
         val sectionsPagerAdapter = SectionPagerAdapter(this)
-        val viewPager: ViewPager2 = findViewById(R.id.viewpager2)
+        val viewPager: ViewPager2 = binding.viewpager2
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.detailtab)
         TabLayoutMediator(tabs, viewPager) { tab, position ->

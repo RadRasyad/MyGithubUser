@@ -32,13 +32,14 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = UsersAdapter()
-        adapter.notifyDataSetChanged()
+        //adapter.notifyDataSetChanged()
 
         binding?.apply {
             rvUser.layoutManager = LinearLayoutManager(activity)
             rvUser.setHasFixedSize(true)
             rvUser.adapter = adapter
         }
+
         showLoading(true)
         viewModel = ViewModelProvider(requireActivity())[FollowersViewModel::class.java]
         viewModel.getListFollowers().observe(requireActivity(), {

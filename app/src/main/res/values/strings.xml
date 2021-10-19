@@ -29,5 +29,6 @@
     <string name="favorite_button">Favorite Button</string>
     <string name="cd_emptyState">The list is empty, try to find some users</string>
     <string name="empty_state_subtitle">Favorite some user</string>
+    <string name="user_not_found">User Not Found</string>
 
 </resources>

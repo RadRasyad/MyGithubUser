@@ -35,6 +35,7 @@ class FavoriteActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initAppbar()
+        binding.favRvUser.setHasFixedSize(true)
 
         adapter = UsersAdapter()
         adapter.notifyDataSetChanged()
@@ -68,7 +69,6 @@ class FavoriteActivity : AppCompatActivity() {
                 } else {
                     showEmpty(true)
                 }
-
             }
         })
     }
@@ -121,7 +121,6 @@ class FavoriteActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.fav_toolbar))
 
         binding.toolbarLayout.title = "Favorite User"
-        binding.favRvUser.setHasFixedSize(true)
         binding.toolbarLayout.setExpandedTitleColor(Color.WHITE)
         binding.toolbarLayout.setCollapsedTitleTextColor(Color.WHITE)
         binding.favToolbar.overflowIcon =

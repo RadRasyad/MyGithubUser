@@ -1,6 +1,5 @@
 package com.radrasyad.myapplication.ui.splashscreen
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +19,6 @@ import com.radrasyad.myapplication.helper.SettingViewModelFactory
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-@SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +44,6 @@ class SplashScreen : AppCompatActivity() {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 }
             })
-    }
 
+    }
 }

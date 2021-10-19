@@ -12,10 +12,6 @@ import retrofit2.http.Query
 
 interface Api {
 
-    companion object {
-        const val secret = BuildConfig.KEY
-    }
-
     @GET("search/users")
     @Headers("Authorization: token $secret")
 
@@ -41,4 +37,7 @@ interface Api {
         @Path("username") username: String
     ): Call<ArrayList<Users>>
 
+    companion object {
+        const val secret = BuildConfig.KEY
+    }
 }

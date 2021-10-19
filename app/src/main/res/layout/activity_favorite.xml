@@ -22,7 +22,7 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:statusBarScrim="@color/white"
-            app:toolbarId="@+id/toolbar">
+            app:toolbarId="@+id/fav_toolbar">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/fav_toolbar"

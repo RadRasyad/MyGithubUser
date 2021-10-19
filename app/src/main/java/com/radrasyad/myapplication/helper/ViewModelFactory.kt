@@ -9,6 +9,15 @@ import com.radrasyad.myapplication.ui.favorite.FavoriteViewModel
 class ViewModelFactory constructor(private val mApplication: Application) :
     ViewModelProvider.NewInstanceFactory() {
 
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
+            return FavoriteViewModel(mApplication) as T
+        } else if (modelClass.isAssignableFrom(DetailUserViewModel::class.java)) {
+            return DetailUserViewModel(mApplication) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
+    }
+
     companion object {
         @Volatile
         private var INSTANCE: ViewModelFactory? = null
@@ -22,16 +31,6 @@ class ViewModelFactory constructor(private val mApplication: Application) :
             }
             return INSTANCE as ViewModelFactory
         }
-    }
-
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
-            return FavoriteViewModel(mApplication) as T
-        } else if (modelClass.isAssignableFrom(DetailUserViewModel::class.java)) {
-            return DetailUserViewModel(mApplication) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
     }
 
 }

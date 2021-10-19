@@ -1,6 +1,5 @@
 package com.radrasyad.myapplication.ui.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,11 +18,9 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.UserViewHolder>() {
     }
 
     fun setList(user: ArrayList<Users>) {
-
         listUser.clear()
         listUser.addAll(user)
         notifyDataSetChanged()
-
     }
 
     inner class UserViewHolder(private val binding: UserRowBinding) :
