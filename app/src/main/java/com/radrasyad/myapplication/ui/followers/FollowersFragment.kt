@@ -32,7 +32,7 @@ class FollowersFragment : Fragment(R.layout.fragment_followers) {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = UsersAdapter()
-        //adapter.notifyDataSetChanged()
+        adapter.notifyDataSetChanged()
 
         binding?.apply {
             rvUser.layoutManager = LinearLayoutManager(activity)

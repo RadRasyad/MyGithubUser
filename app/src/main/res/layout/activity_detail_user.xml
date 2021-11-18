@@ -30,8 +30,7 @@
                     android:id="@+id/headerCollapsing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:paddingTop="24dp">
+                    android:padding="8dp">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="88dp"
