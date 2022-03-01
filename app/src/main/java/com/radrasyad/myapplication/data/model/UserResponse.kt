@@ -1,4 +1,4 @@
-package com.radrasyad.myapplication.data.data.model
+package com.radrasyad.myapplication.data.model
 
 data class UserResponse(
     val items: ArrayList<Users>

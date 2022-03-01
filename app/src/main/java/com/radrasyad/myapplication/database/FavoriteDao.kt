@@ -2,7 +2,7 @@ package com.radrasyad.myapplication.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.radrasyad.myapplication.data.data.model.Favorite
+import com.radrasyad.myapplication.data.model.Favorite
 
 @Dao
 interface FavoriteDao {

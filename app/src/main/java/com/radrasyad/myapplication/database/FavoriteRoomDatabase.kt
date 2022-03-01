@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.radrasyad.myapplication.data.data.model.Favorite
+import com.radrasyad.myapplication.data.model.Favorite
 
 
 @Database(entities = [Favorite::class], version = 1)

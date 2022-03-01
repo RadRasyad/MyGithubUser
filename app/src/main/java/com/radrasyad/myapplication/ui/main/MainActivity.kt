@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.radrasyad.myapplication.R
-import com.radrasyad.myapplication.data.data.model.Users
+import com.radrasyad.myapplication.data.model.Users
 import com.radrasyad.myapplication.databinding.ActivityMainBinding
 import com.radrasyad.myapplication.ui.setting.Setting
 import com.radrasyad.myapplication.ui.detail.DetailUserActivity

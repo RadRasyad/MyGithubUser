@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.radrasyad.myapplication.api.RetrofitClient
-import com.radrasyad.myapplication.data.data.model.Users
+import com.radrasyad.myapplication.data.model.Users
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

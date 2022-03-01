@@ -2,7 +2,7 @@ package com.radrasyad.myapplication.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import com.radrasyad.myapplication.data.data.model.Favorite
+import com.radrasyad.myapplication.data.model.Favorite
 import com.radrasyad.myapplication.database.FavoriteDao
 import com.radrasyad.myapplication.database.FavoriteRoomDatabase
 

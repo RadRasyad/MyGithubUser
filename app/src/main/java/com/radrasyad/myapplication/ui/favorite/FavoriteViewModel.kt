@@ -3,7 +3,7 @@ package com.radrasyad.myapplication.ui.favorite
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.radrasyad.myapplication.data.data.model.Favorite
+import com.radrasyad.myapplication.data.model.Favorite
 import com.radrasyad.myapplication.repository.FavoriteRepository
 
 

@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.radrasyad.myapplication.api.RetrofitClient
-import com.radrasyad.myapplication.data.data.model.DetailUserResponse
-import com.radrasyad.myapplication.data.data.model.Favorite
+import com.radrasyad.myapplication.data.model.DetailUserResponse
+import com.radrasyad.myapplication.data.model.Favorite
 import com.radrasyad.myapplication.repository.FavoriteRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

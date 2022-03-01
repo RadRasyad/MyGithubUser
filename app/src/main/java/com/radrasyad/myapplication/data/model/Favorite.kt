@@ -1,4 +1,4 @@
-package com.radrasyad.myapplication.data.data.model
+package com.radrasyad.myapplication.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
