@@ -4,6 +4,8 @@ Project submision-3 dicoding bfaa
 
 Aplikasi pencarian user github
 
+***Optional***
+
 jgn lupa set api key di 
 gradle.properties  apiKey="yourapi"
 
@@ -18,7 +20,7 @@ gradle.properties  apiKey="yourapi"
 
 **Search**
 
-<img src="https://github.com/RadRasyad/MyGithubUser/blob/master/ss/search_rasyad.png" width="300"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/RadRasyad/MyGithubUser/blob/master/ss/search_rasyad.png" width="300">
+<img src="https://github.com/RadRasyad/MyGithubUser/blob/master/ss/search_rasyad.png" width="300"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/RadRasyad/MyGithubUser/blob/master/ss/rasyad_found.png" width="300">
 
 **Detail User**
 
