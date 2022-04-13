@@ -1,4 +1,6 @@
 # MyGithubUser
+**Sample App**\
+[![GithubUser](https://img.shields.io/badge/MyGithubUser-APK-black.svg?style=for-the-badge&logo=android)](https://github.com/RadRasyad/MyGithubUser/raw/master/debug/app-debug.apk)
 
 Project submision-3 dicoding bfaa
 
